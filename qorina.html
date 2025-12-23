@@ -6,6 +6,9 @@
     <title>Happy Birthday Qorina 🎂</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
+
+
+
         /* --- RESET & BASE --- */
         * {
             margin: 0;
@@ -454,6 +457,93 @@
 
 
 
+
+
+
+
+
+/* --- TAMBAHAN: STYLE ANIMASI FINALE (BUNGA & KEMBANG API) --- */
+#final-celebration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    z-index: 9999; /* Paling atas menutupi semua */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Agar bunga di bawah */
+    pointer-events: none;
+}
+
+#final-celebration.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Kembang Api CSS Murni */
+.firework-css {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    animation: explodeCSS 2s infinite ease-out;
+}
+.fw-1 { top: 30%; left: 20%; color: #ff6b6b; animation-delay: 0s; }
+.fw-2 { top: 60%; left: 80%; color: #51cf66; animation-delay: 0.5s; }
+.fw-3 { top: 40%; left: 50%; color: #ffd700; animation-delay: 1s; }
+
+@keyframes explodeCSS {
+    0% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+    100% {
+        box-shadow: -120px -150px 0 -5px currentColor, 120px -150px 0 -5px currentColor,
+                    -150px 0px 0 -5px currentColor, 150px 0px 0 -5px currentColor,
+                    -120px 150px 0 -5px currentColor, 120px 150px 0 -5px currentColor;
+        opacity: 0;
+    }
+}
+
+/* Bunga Mekar di Tengah */
+.main-flower {
+    width: 300px;
+    height: auto;
+    opacity: 0;
+    transform-origin: bottom center;
+    filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.6));
+    animation: riseAndBloom 3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 1s; /* Muncul setelah background gelap */
+    margin-bottom: -20px;
+}
+
+@keyframes riseAndBloom {
+    0% { opacity: 0; transform: scale(0.1) translateY(100%); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.final-msg {
+    position: absolute;
+    bottom: 30%;
+    color: #ffd700;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0;
+    animation: fadeInMsg 2s ease forwards 3s;
+    text-align: center;
+    width: 100%;
+}
+@keyframes fadeInMsg { to { opacity: 1; } }
+
+
+
     </style>
 </head>
 <body>
@@ -470,7 +560,7 @@
             <div class="hero-emoji">🎂</div>
             <h1 class="hero-title">Happy Birthday</h1>
             <h2 class="hero-name">Qorina</h2>
-            <p class="hero-disclaimer">(JK, have fun reading this)</p>
+            <!-- <p class="hero-disclaimer">(JK, have fun reading this)</p> -->
         </div>
         
         <div class="click-anywhere" id="clickPrompt" style="opacity: 0;">👆 Click anywhere to continue</div>
@@ -479,9 +569,9 @@
     <div class="scene" id="scene2">
         <div class="container">
             <div class="roast-header">
-                <div class="roast-badge">🗺️ TRAVEL ROAST MODE</div>
-                <h2 class="roast-title">Agenda Wajib (Seriously)</h2>
-                <p class="roast-subtitle">Because I have opinions about your travel plans</p>
+                <!-- <div class="roast-badge">🗺️ TRAVEL ROAST MODE</div> -->
+                <!-- <h2 class="roast-title">Agenda Wajib (Seriously)</h2> -->
+                <!-- <p class="roast-subtitle">Because I have opinions about your travel plans</p> -->
             </div>
 
             <div class="travel-card">
@@ -495,10 +585,10 @@
                 <div class="travel-body">
                     <p class="travel-roast">
                         Jangan lupa ke <span class="highlight">Bromo</span>! Bromo sebagus itu, sayang kalau ga dikunjungi. 
-                        <span class="savage">Jakarta pernah tapi Bromo gaa? Aneh kamu.</span>
+                        <span class="savage">Jakarta pernah tapi Bromo gaa? Padahal deket an bromo Aneh kamu WKWKWK.</span> 
                     </p>
                     <div class="travel-footer">
-                        Sunrise di Bromo hits different — literally worth waking up at 3 AM (trust me on this)
+                        Sunrise di Bromo bagus bangetttt minus nya cuma 1 dingin banget 🥶
                     </div>
                 </div>
             </div>
@@ -515,10 +605,10 @@
                     <p class="travel-roast">
                         Jangan lupa juga <span class="highlight">Pantai Modangan</span>! 
                         <span class="highlight">Bukit Waungnya</span> bagus banget itu. 
-                        Hidden gem yang somehow masih sepi (for now).
+                        Hidden gem yang somehow masih sepi (for now , maybe ).
                     </p>
                     <div class="travel-footer">
-                        Pro tip: Dateng sore buat golden hour vibes — foto Instagram auto aesthetic 📸
+                         Dateng sore buat golden hour vibes bagus banget bukit waung nya , pantainya juga asik buat santai
                     </div>
                 </div>
             </div>
@@ -529,8 +619,8 @@
         <div class="container">
             <div class="roast-header">
                 <div class="roast-badge">🏙️ CITY GUIDE</div>
-                <h2 class="roast-title">Keliling Malang 101</h2>
-                <p class="roast-subtitle">Unofficial tour guide dari orang yang pernah kesana (maybe)</p>
+                <h2 class="roast-title">Happy Liburann di Malang/Batu nyaa</h2>
+                <p class="roast-subtitle">Jangan lupa jelajahi alam di malang nya </p>
             </div>
 
             <div class="explorer-grid">
@@ -543,13 +633,13 @@
                 <div class="spot-card">
                     <div class="spot-icon">🌳</div>
                     <h3 class="spot-name">Kayutangan</h3>
-                    <p class="spot-desc">Street food heaven. Perut kenyang, dompet aman (hopefully).</p>
+                    <p class="spot-desc">Aesthetic street vibes. Perfect buat jalan santai sambil poto-poto.</p>
                 </div>
 
                 <div class="spot-card">
                     <div class="spot-icon">🏛️</div>
                     <h3 class="spot-name">Balai Kota</h3>
-                    <p class="spot-desc">Colonial architecture meets modern vibes. Instagram-worthy spot 📷</p>
+                    <!-- <p class="spot-desc">Colonial architecture meets modern vibes. Instagram-worthy spot 📷</p> -->
                 </div>
             </div>
 
@@ -570,7 +660,7 @@
             <div class="roast-header">
                 <div class="roast-badge">📚 REALITY CHECK</div>
                 <h2 class="roast-title">Back to Real Life</h2>
-                <p class="roast-subtitle">Gentle reminder dari temen yang care (tapi juga suka nyindir)</p>
+                <!-- <p class="roast-subtitle">Gentle reminder dari temen yang care (tapi juga suka nyindir)</p> -->
             </div>
 
             <div class="reality-check">
@@ -581,13 +671,13 @@
                     Seriously though, you got this. Take your time, jangan stress berlebihan, 
                     dan remember: done is better than perfect (tapi tetep usahain yang terbaik ya).
                 </p>
-                <div class="pro-tip">
+                <!-- <div class="pro-tip">
                     <div class="pro-tip-label">PRO TIP</div>
                     <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9;">
                         Jalan-jalan boleh, tapi jangan sampe skripsi terbengkalai. 
                         Balance is key — work hard, play harder (tapi tetep prioritas dulu yang penting).
                     </p>
-                </div>
+                </div> -->
             </div>
 
             <div class="reality-check">
@@ -614,9 +704,8 @@
                 skripsi yang lancar (aamiin), dan momen-momen yang bikin kamu bilang "worth it".
             </p>
             <p class="finale-text">
-                Stay cool, stay awesome, jangan lupa sunblock kalau jalan-jalan 
-                (seriously, kulit kamu thanking you later), dan yang paling penting: 
-                <strong style="color:#667eea">actually visit those places</strong>.
+                Stay cool, stay awesome, and most importantly — 
+                <strong style="color:#667eea">actually visit those places, baguss bangett itu </strong>.
             </p>
             <p class="finale-signature">
                 Happy Birthday, Qorina! 🎂✨
@@ -627,6 +716,27 @@
             <button class="restart-btn" onclick="restartExperience()">↺ Baca Lagi</button>
         </div>
     </div>
+<div id="final-celebration">
+    <div class="firework-css fw-1" style="color: #ff6b6b;"></div>
+    <div class="firework-css fw-2" style="color: #51cf66;"></div>
+    <div class="firework-css fw-3" style="color: #ffd700;"></div>
+
+    <svg class="main-flower" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="flowerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" style="stop-color:#ff758c;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#ff7eb3;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <path fill="url(#flowerGrad)" d="M256,512c0,0-23.7-41.9-46.7-93.3c-14.6-32.6-26.6-67.4-26.6-96c0-36.8,32.8-66.7,73.3-66.7c40.5,0,73.3,29.8,73.3,66.7c0,28.6-12,63.4-26.6,96C279.7,470.1,256,512,256,512z"/>
+        <path fill="url(#flowerGrad)" opacity="0.8" d="M256,512c0,0-58.4-60.6-98.3-138.7c-21.4-41.9-35-84.6-35-117.3c0-44.2,39.4-80,88-80c26.2,0,50.3,10.4,66.7,27.3c0,0-13.3,42.7-21.3,64C256,266.7,256,512,256,512z"/>
+        <path fill="url(#flowerGrad)" opacity="0.8" d="M256,512c0,0,58.4-60.6,98.3-138.7c21.4-41.9,35-84.6,35-117.3c0-44.2-39.4-80-88-80c-26.2,0-50.3,10.4-66.7,27.3c0,0,13.3,42.7,21.3,64C256,266.7,256,512,256,512z" transform="scale(-1, 1) translate(-512, 0)"/>
+        <path fill="url(#flowerGrad)" opacity="0.6" d="M195.3,448c0,0-63.5-58.7-101.3-128c-20.3-37.2-30-73.3-30-101.3c0-36.8,29.8-66.7,66.7-66.7c19.9,0,38.5,8.8,51.3,23c10.5,11.6,33.3,43.7,33.3,43.7S195.3,448,195.3,448z"/>
+        <path fill="url(#flowerGrad)" opacity="0.6" d="M316.7,448c0,0,63.5-58.7,101.3-128c20.3-37.2,30-73.3,30-101.3c0-36.8-29.8-66.7-66.7-66.7c-19.9,0-38.5,8.8-51.3,23c-10.5,11.6-33.3,43.7-33.3,43.7S316.7,448,316.7,448z"/>
+    </svg>
+
+    <div class="final-msg">Sampai Jumpa di Lain Kesempatan ✨</div>
+</div>
 
     <div class="nav-container">
         <button class="nav-btn" id="prevBtn" onclick="prevScene()">← Back</button>
@@ -637,7 +747,7 @@
         let currentScene = 1;
         const totalScenes = 5;
 
-        function updateScene() {
+function updateScene() {
             // Remove active class from all scenes
             document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
             
@@ -652,28 +762,47 @@
             // Update button states
             document.getElementById('prevBtn').disabled = currentScene === 1;
             
-            // Change Next button text on last slide
+            // --- LOGIKA BARU UNTUK TOMBOL NEXT ---
             const nextBtn = document.getElementById('nextBtn');
             if (currentScene === totalScenes) {
-                nextBtn.innerHTML = "Finish ✨";
-                nextBtn.disabled = true;
-                nextBtn.style.opacity = "0"; // Hide next button on last scene
+                // Di Scene 5, tombol berubah jadi pemicu kejutan
+                nextBtn.innerHTML = "Buka Page Terakhir ✨";
+                nextBtn.disabled = false; // JANGAN disable, biar bisa diklik
+                nextBtn.style.opacity = "1";
+                nextBtn.onclick = triggerFinalSurprise; // Ganti fungsi klik
             } else {
+                // Di scene lain, tombol berfungsi normal
                 nextBtn.innerHTML = "Next →";
                 nextBtn.disabled = false;
                 nextBtn.style.opacity = "1";
+                nextBtn.onclick = nextScene; // Balikin fungsi klik
             }
             
-            // Scroll to top with behavior
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
         function nextScene() {
             if (currentScene < totalScenes) {
                 currentScene++;
                 updateScene();
             }
         }
+
+// Fungsi untuk memicu overlay Bunga & Kembang Api
+        function triggerFinalSurprise() {
+            // Sembunyikan navigasi biar bersih
+            document.querySelector('.nav-container').style.display = 'none';
+            
+            // Munculkan overlay
+            // const overlay = document.getElementById('final-celebration');
+            // overlay.classList.add('active');
+
+            // Timer untuk pindah ke halaman hadiah otomatis (misal 8 detik)
+            setTimeout(() => {
+                 window.location.href = "hadiah.html"; // Pastikan file ini ada
+            }, 1000);
+        }
+
+
 
         function prevScene() {
             if (currentScene > 1) {
